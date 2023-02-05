@@ -14,6 +14,9 @@ module.exports = {
           600: '#999999',
           700: '#47585B',
         },
+        yellow: {
+          20: '#FFBA0880',
+        },
       },
       backgroundImage: {
         hero: "url('/background.png')",
