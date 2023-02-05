@@ -10,9 +10,13 @@ module.exports = {
       colors: {
         gray: {
           100: '#F5F8FA',
+          200: '#DADADA',
           600: '#999999',
           700: '#47585B',
         },
+      },
+      backgroundImage: {
+        hero: "url('/background.png')",
       },
     },
   },
