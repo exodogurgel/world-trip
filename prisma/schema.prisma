@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Continent {
+  slug             String   @id
+  name             String
+  description      String
+  resume           String
+  banner_url       String
+  cover            String
+  countries_amount Int
+  languages_amount Int
+  cities_amount    Int
+  created_at       DateTime @default(now())
+
+  cities City[]
+
+  @@map("continents")
+}
+
+model City {
+  id        String @id @default(cuid())
+  image_url String
+  name      String
+  country   String
+  flag      String
+
+  continent      Continent @relation(fields: [continent_slug], references: [slug])
+  continent_slug String
+
+  @@map("cities")
+}

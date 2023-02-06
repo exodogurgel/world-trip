@@ -23,7 +23,7 @@ export function Carousel() {
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
       >
         <SwiperSlide>
-          <div className="flex flex-col items-center justify-center h-64 md:h-[450px] w-full bg-no-repeat bg-cover bg-[url('https://images.unsplash.com/photo-1485081669829-bacb8c7bb1f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80')]">
+          <div className="flex flex-col items-center justify-center h-64 md:h-[450px] w-full bg-center bg-no-repeat bg-cover bg-[url('https://images.unsplash.com/photo-1485081669829-bacb8c7bb1f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80')]">
             <Link
               className="flex flex-col gap-3 items-center justify-center"
               href="/"
@@ -38,7 +38,7 @@ export function Carousel() {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="flex flex-col items-center justify-center h-64 md:h-[450px] w-full bg-no-repeat bg-cover bg-[url('https://images.unsplash.com/photo-1485081669829-bacb8c7bb1f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80')]">
+          <div className="flex flex-col items-center justify-center h-64 md:h-[450px] w-full bg-center bg-no-repeat bg-cover bg-[url('https://images.unsplash.com/photo-1485081669829-bacb8c7bb1f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80')]">
             <Link
               className="flex flex-col gap-3 items-center justify-center"
               href="/"
@@ -53,7 +53,7 @@ export function Carousel() {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="flex flex-col items-center justify-center h-64 md:h-[450px] w-full bg-no-repeat bg-cover bg-[url('https://images.unsplash.com/photo-1485081669829-bacb8c7bb1f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80')]">
+          <div className="flex flex-col items-center justify-center h-64 md:h-[450px] w-full bg-center bg-no-repeat bg-cover bg-[url('https://images.unsplash.com/photo-1525608567027-0642704ccb46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1542&q=80')]">
             <Link
               className="flex flex-col gap-3 items-center justify-center"
               href="/"
