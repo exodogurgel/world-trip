@@ -1,4 +1,5 @@
 import { CityCard } from '@/components/CityCard'
+import { ContinentInfo } from '@/components/ContinentInfo'
 import Head from 'next/head'
 
 export default function Continent() {
@@ -24,26 +25,9 @@ export default function Continent() {
             o rio Ural, o mar Cáspio, o Cáucaso, e o mar Negro a sudeste
           </article>
           <div className="w-full flex-1 flex justify-between">
-            <div className="flex flex-col items-start md:items-center">
-              <strong className="text-2xl md:text-5xl md:font-semibold text-yellow-400 leading-8 md:leading-[60px]">
-                50
-              </strong>
-              <span className="text-lg md:text-2xl font-semibold">países</span>
-            </div>
-            <div className="flex flex-col items-start md:items-center">
-              <strong className="text-2xl md:text-5xl md:font-semibold text-yellow-400 leading-8 md:leading-[60px]">
-                60
-              </strong>
-              <span className="text-lg md:text-2xl font-semibold">linguas</span>
-            </div>
-            <div className="flex flex-col items-start md:items-center">
-              <strong className="text-2xl md:text-5xl md:font-semibold text-yellow-400 leading-8 md:leading-[60px]">
-                27
-              </strong>
-              <span className="text-lg md:text-2xl font-semibold">
-                cidades + 100
-              </span>
-            </div>
+            <ContinentInfo infoName="países" quantity={50} />
+            <ContinentInfo infoName="linguas" quantity={60} />
+            <ContinentInfo infoName="cidades + 100" quantity={27} />
           </div>
         </section>
 
