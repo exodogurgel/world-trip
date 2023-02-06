@@ -47,9 +47,11 @@ export default function Continent() {
           </div>
         </section>
 
-        <section className="max-w-[1240px] md:px-10 mx-auto mb-44">
-          <h2 className="text-4xl font-medium mb-10">Cidades +100</h2>
-          <div className="grid grid-cols-4 gap-11">
+        <section className="px-4 max-w-[1240px] md:px-10 mx-auto mb-44">
+          <h2 className="text-2xl md:text-4xl font-medium mb-5 md:mb-10">
+            Cidades +100
+          </h2>
+          <div className="grid grid-cols-1 gap-5 mx-auto md:grid-cols-4 md:gap-11">
             <CityCard />
             <CityCard />
             <CityCard />

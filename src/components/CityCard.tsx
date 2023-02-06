@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export function CityCard() {
   return (
-    <div className="w-64 rounded">
+    <div className="w-64 rounded mx-auto">
       <Image
         className="rounded-t"
         src="https://images.unsplash.com/photo-1485081669829-bacb8c7bb1f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
@@ -19,7 +19,7 @@ export function CityCard() {
         </div>
         <Image
           className="w-[30px] h-[30px] rounded-full object-cover"
-          src="https://images.unsplash.com/photo-1605627080494-8a727e8b24d0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=743&q=80"
+          src="https://static.significados.com.br/flags/ar.svg"
           alt=""
           width={30}
           height={30}
