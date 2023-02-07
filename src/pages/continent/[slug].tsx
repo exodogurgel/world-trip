@@ -1,33 +1,70 @@
 import { CityCard } from '@/components/CityCard'
 import { ContinentInfo } from '@/components/ContinentInfo'
+import { prisma } from '@/lib/prisma'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 
-export default function Continent() {
+type City = {
+  id: string
+  image_url: string
+  name: string
+  country: string
+  flag: string
+}
+
+type ContinentType = {
+  slug: string
+  name: string
+  cover: string
+  resume: string
+  description: string
+  citiesAmount: number
+  countriesAmount: number
+  languagesAmount: number
+  cities: City[]
+}
+
+interface ContinentProps {
+  continent: ContinentType
+}
+
+export default function Continent({ continent }: ContinentProps) {
   return (
     <>
       <Head>
-        <title></title>
+        <title>{continent.name} | Worldtrip</title>
       </Head>
       <main>
-        <div className="w-full h-[150px] md:h-[500px] bg-no-repeat bg-cover bg-[url('https://images.unsplash.com/photo-1485081669829-bacb8c7bb1f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80')]">
+        <div
+          style={{
+            backgroundImage: `url(${continent.cover})`,
+          }}
+          className="w-full h-[150px] md:h-[500px] bg-no-repeat bg-cover"
+        >
           <div className="h-full max-w-[1240px] flex flex-col items-center md:items-start justify-center md:justify-end mx-auto md:pb-14 md:px-10">
             <strong className="text-3xl md:text-5xl font-semibold text-gray-100">
-              Europe
+              {continent.name}
             </strong>
           </div>
         </div>
 
         <section className="px-4 h-full mt-6 mb-8 md:my-20 max-w-[1240px] md:px-10 mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-[70px]">
           <article className="text-lg leading-7 md:flex-1 md:text-2xl md:leading-9 text-justify">
-            A Europa é, por convenção, um dos seis continentes do mundo.
-            Compreendendo a península ocidental da Eurásia, a Europa geralmente
-            divide-se da Ásia a leste pela divisória de águas dos montes Urais,
-            o rio Ural, o mar Cáspio, o Cáucaso, e o mar Negro a sudeste
+            {continent.resume}
           </article>
           <div className="w-full flex-1 flex justify-between">
-            <ContinentInfo infoName="países" quantity={50} />
-            <ContinentInfo infoName="linguas" quantity={60} />
-            <ContinentInfo infoName="cidades + 100" quantity={27} />
+            <ContinentInfo
+              infoName="países"
+              quantity={continent.countriesAmount}
+            />
+            <ContinentInfo
+              infoName="linguas"
+              quantity={continent.languagesAmount}
+            />
+            <ContinentInfo
+              infoName="cidades + 100"
+              quantity={continent.citiesAmount}
+            />
           </div>
         </section>
 
@@ -36,14 +73,58 @@ export default function Continent() {
             Cidades +100
           </h2>
           <div className="grid grid-cols-1 gap-5 mx-auto md:grid-cols-4 md:gap-11">
-            <CityCard />
-            <CityCard />
-            <CityCard />
-            <CityCard />
-            <CityCard />
+            {continent.cities.map((city) => {
+              return (
+                <CityCard
+                  key={city.id}
+                  country={city.country}
+                  flag={city.flag}
+                  image_url={city.image_url}
+                  name={city.name}
+                />
+              )
+            })}
           </div>
         </section>
       </main>
     </>
   )
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const slug = String(params!.slug)
+
+  const continent = await prisma.continent.findFirst({
+    where: {
+      slug,
+    },
+    include: {
+      cities: true,
+    },
+  })
+
+  const continentFormatted = {
+    slug: continent!.slug,
+    name: continent!.name,
+    cover: continent!.cover,
+    resume: continent!.resume,
+    description: continent!.description,
+    citiesAmount: continent!.cities_amount,
+    countriesAmount: continent!.countries_amount,
+    languagesAmount: continent!.languages_amount,
+    cities: continent!.cities,
+  }
+
+  return {
+    props: {
+      continent: continentFormatted,
+    },
+  }
 }

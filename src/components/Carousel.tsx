@@ -2,11 +2,13 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, {
   Navigation,
   Pagination,
-  Mousewheel,
-  Keyboard,
   Autoplay,
+  Scrollbar,
+  A11y,
 } from 'swiper'
 import Link from 'next/link'
+
+SwiperCore.use([Autoplay, Pagination, Scrollbar, A11y, Navigation])
 
 type Continent = {
   slug: string
@@ -20,7 +22,6 @@ interface CarouselProps {
 }
 
 export function Carousel({ continents }: CarouselProps) {
-  SwiperCore.use([Autoplay])
   return (
     <>
       <Swiper
@@ -29,9 +30,8 @@ export function Carousel({ continents }: CarouselProps) {
         autoplay={{
           delay: 5000,
         }}
-        navigation={true}
-        pagination={true}
-        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+        navigation
+        pagination={{ clickable: true }}
       >
         {continents?.map((continent) => {
           return (
