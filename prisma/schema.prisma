@@ -6,17 +6,18 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model Continent {
   slug             String   @id
   name             String
   description      String
-  resume           String
-  banner_url       String
-  cover            String
+  resume           String   @db.Text
+  banner_url       String   @db.Text
+  cover            String   @db.Text
   countries_amount Int
   languages_amount Int
   cities_amount    Int
@@ -29,13 +30,14 @@ model Continent {
 
 model City {
   id        String @id @default(cuid())
-  image_url String
+  image_url String @db.Text
   name      String
   country   String
-  flag      String
+  flag      String @db.Text
 
   continent      Continent @relation(fields: [continent_slug], references: [slug])
   continent_slug String
 
+  @@index([continent_slug])
   @@map("cities")
 }
